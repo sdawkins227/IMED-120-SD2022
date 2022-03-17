@@ -2,30 +2,30 @@ function setup() {
   // put setup code here
     createCanvas(windowWidth, windowHeight);
     background ('lavender')
-    }
+    //sayHello(myname);
 
+    input = createInput();
+    input.position(20,65);
 
-function draw() {
-    //white keys
-    for(let w=0; w<14; w++){
-        fill('white');
-        rect(100+55*w, 30, 55, 400,0,0,15,15);
-    }
-    //2 sets of black keys
-    for(let z=0; z<2; z++){   
-        fill('black');
-        rect(140+z*45, 30, 35, 215, 0, 0, 5, 5);
-        rect(525+z*45, 30, 35, 215, 0, 0, 5, 5);
-    }
+    textSize(36);
+    text('Type the number you want to calculate for tips.', 20, 40);
+
+    button = createButton('15% Tips');
+    button.position(input.x + input.width + 5, 65);
+    button.mousePressed(function(){tipCalculator(0.15);})
     
-    //3 sets of black keys
-    for(let i=0; i<3; i++){
-        fill('black');
-        rect(310+i*50, 30, 35, 215, 0, 0, 5, 5);
-        rect(690+i*50, 30, 35, 215, 0, 0, 5, 5);
-    }
-
-
+    
+    button = createButton('20% Tips');
+    button.position(input.x + input.width + 90, 65);
+    button.mousePressed(function(){tipCalculator(0.20);})
+    
+    
+    button = createButton('25% Tips');
+    button.position(input.x + input.width + 175, 65);
+    button.mousePressed(function(){tipCalculator(0.25);})
 }
-    
 
+
+function tipCalculator(percent){
+    text('For ' + percent + ' you need to pay $' + input.value()*percent + ' for tips',  20, 1000*percent);
+}
